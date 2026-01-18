@@ -1,9 +1,21 @@
 {
-  "name": "aquisitions",
+  "name": "acquisitions",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "imports": {
+    "#src/*": "./src/*",
+    "#config/*": "./src/config/*",
+    "#controllers/*": "./src/controllers/*",
+    "#models/*": "./src/models/*",
+    "#utils/*": "./src/utils/*",
+    "#middleware/*": "./src/middleware/*",
+    "#services/*": "./src/services/*",
+    "#routes/*": "./src/routes/*",
+    "#validations/*": "./src/validations/*"
+  },
   "scripts": {
+    "start": "node src/index.js",
     "dev": "node --watch src/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -11,26 +23,39 @@
     "format:check": "prettier --check .",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "dev:docker": "sh ./scripts/dev.sh",
+    "prod:docker": "sh ./scripts/prod.sh",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnsonr84/aquisitions.git"
+    "url": "git+https://github.com/johnsonr84/acquisitions.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/johnsonr84/aquisitions/issues"
+    "url": "https://github.com/johnsonr84/acquisitions/issues"
   },
-  "homepage": "https://github.com/johnsonr84/aquisitions#readme",
+  "homepage": "https://github.com/johnsonr84/acquisitions#readme",
   "dependencies": {
+    "@arcjet/inspect": "^1.0.0-beta.17",
+    "@arcjet/node": "^1.0.0-beta.17",
     "@neondatabase/serverless": "^1.0.2",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
-    "winston": "^3.19.0"
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.10.1",
+    "pg": "^8.17.1",
+    "winston": "^3.19.0",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
@@ -38,6 +63,8 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
-    "prettier": "^3.8.0"
+    "jest": "^30.2.0",
+    "prettier": "^3.8.0",
+    "supertest": "^7.2.2"
   }
 }
